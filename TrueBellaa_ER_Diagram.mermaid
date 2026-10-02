@@ -1,0 +1,91 @@
+%% TrueBellaa Commerce — core entity relationships
+%% (audit/webhook tables omitted here for readability; see the docs)
+erDiagram
+    TENANTS ||--o{ TENANT_LOCALES : "enables"
+    TENANTS ||--o{ USERS : "employs (staff)"
+    TENANTS ||--o{ ROLES : "defines"
+    TENANTS ||--o{ CUSTOMERS : "has shoppers"
+    TENANTS ||--o{ CATEGORIES : "owns"
+    TENANTS ||--o{ PRODUCTS : "owns"
+    TENANTS ||--o{ ORDERS : "receives"
+    LOCALES ||--o{ TENANT_LOCALES : "is"
+
+    USERS ||--o{ USER_ROLES : "assigned"
+    ROLES ||--o{ USER_ROLES : "grants"
+    ROLES ||--o{ ROLE_PERMISSIONS : "has"
+    PERMISSIONS ||--o{ ROLE_PERMISSIONS : "in"
+
+    CATEGORIES ||--o{ CATEGORY_TRANSLATIONS : "translated by"
+    CATEGORIES ||--o{ PRODUCTS : "groups"
+    PRODUCTS ||--o{ PRODUCT_TRANSLATIONS : "translated by"
+    PRODUCTS ||--o{ PRODUCT_IMAGES : "shows"
+    PRODUCTS ||--o{ PRODUCT_VARIANTS : "sells as"
+    PRODUCTS ||--o{ PRODUCT_REVIEWS : "reviewed by"
+    LOCALES ||--o{ PRODUCT_TRANSLATIONS : "in"
+
+    ATTRIBUTES ||--o{ ATTRIBUTE_VALUES : "has"
+    ATTRIBUTE_VALUES ||--o{ VARIANT_ATTRIBUTE_VALUES : "used in"
+    PRODUCT_VARIANTS ||--o{ VARIANT_ATTRIBUTE_VALUES : "made of"
+    PRODUCT_VARIANTS ||--o{ INVENTORY_MOVEMENTS : "stock ledger"
+    PRODUCT_VARIANTS ||--o{ PRODUCT_PRICE_HISTORY : "price trail"
+
+    CUSTOMERS ||--o{ CUSTOMER_ADDRESSES : "saves"
+    CUSTOMERS ||--o{ WISHLIST_ITEMS : "wishes"
+    CUSTOMERS ||--o{ CARTS : "fills"
+    CUSTOMERS ||--o{ ORDERS : "places"
+
+    CARTS ||--o{ CART_ITEMS : "contains"
+    PRODUCT_VARIANTS ||--o{ CART_ITEMS : "added as"
+
+    ORDERS ||--o{ ORDER_ITEMS : "contains"
+    ORDERS ||--o{ ORDER_STATUS_HISTORY : "tracked by"
+    ORDERS ||--o{ PAYMENTS : "paid by"
+    ORDERS ||--o{ SHIPMENTS : "shipped by"
+    ORDERS }o--o| COUPONS : "may use"
+    PRODUCT_VARIANTS ||--o{ ORDER_ITEMS : "sold as"
+
+    PAYMENTS ||--o{ PAYMENT_REFUNDS : "refunded by"
+    SHIPMENTS ||--o{ SHIPMENT_TRACKING_EVENTS : "updated by"
+
+    TENANTS {
+        bigint id PK
+        char public_id
+        string slug
+        string default_locale_code
+        enum status
+    }
+    PRODUCTS {
+        bigint id PK
+        bigint tenant_id FK
+        bigint category_id FK
+        string slug
+        decimal base_price
+        enum status
+    }
+    PRODUCT_VARIANTS {
+        bigint id PK
+        bigint product_id FK
+        string sku
+        decimal price
+        int stock_on_hand
+        int stock_reserved
+    }
+    ORDERS {
+        bigint id PK
+        bigint tenant_id FK
+        string order_number
+        enum status
+        decimal grand_total
+    }
+    PAYMENTS {
+        bigint id PK
+        bigint order_id FK
+        string razorpay_payment_id
+        enum status
+    }
+    SHIPMENTS {
+        bigint id PK
+        bigint order_id FK
+        string awb_code
+        enum status
+    }
