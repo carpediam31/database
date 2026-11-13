@@ -15,7 +15,7 @@
 --  their reference ids + status.
 -- =====================================================================
 
-USE truebellaa;
+-- USE truebellaa;
 SET NAMES utf8mb4;
 
 CREATE TABLE payments (

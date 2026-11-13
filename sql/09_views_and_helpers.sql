@@ -6,7 +6,7 @@
 --  one simple SELECT instead of a big JOIN every time.
 -- =====================================================================
 
-USE truebellaa;
+-- USE truebellaa;
 SET NAMES utf8mb4;
 
 -- Storefront/admin product list: product + English name + default

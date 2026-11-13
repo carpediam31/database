@@ -8,7 +8,7 @@
 --  This is the "customer/user" panel (panel #4).
 -- =====================================================================
 
-USE truebellaa;
+-- USE truebellaa;
 SET NAMES utf8mb4;
 
 CREATE TABLE customers (

@@ -18,7 +18,7 @@
 --  exists to upgrade an existing install.
 -- =====================================================================
 
-USE truebellaa;
+-- USE truebellaa;
 SET NAMES utf8mb4;
 
 -- ---- product_images: add media metadata columns if missing ----------

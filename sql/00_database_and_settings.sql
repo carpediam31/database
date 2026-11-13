@@ -29,11 +29,11 @@
 -- =====================================================================
 
 -- Create the database (safe to re-run).
-CREATE DATABASE IF NOT EXISTS truebellaa
-  CHARACTER SET utf8mb4
-  COLLATE utf8mb4_unicode_ci;
+-- CREATE DATABASE IF NOT EXISTS truebellaa
+--   CHARACTER SET utf8mb4
+--   COLLATE utf8mb4_unicode_ci;
 
-USE truebellaa;
+-- USE truebellaa;
 
 -- Make sure this session behaves strictly and predictably while loading.
 SET NAMES utf8mb4;

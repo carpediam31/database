@@ -14,7 +14,7 @@
 --  Idempotent: safe to run more than once.
 -- =====================================================================
 
-USE truebellaa;
+-- USE truebellaa;
 SET NAMES utf8mb4;
 
 CREATE TABLE IF NOT EXISTS email_templates (

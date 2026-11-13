@@ -14,7 +14,7 @@
 --    products or orders — the app always filters `WHERE tenant_id = ?`.
 -- =====================================================================
 
-USE truebellaa;
+-- USE truebellaa;
 SET NAMES utf8mb4;
 
 -- ---------------------------------------------------------------------

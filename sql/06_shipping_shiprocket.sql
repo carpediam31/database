@@ -8,7 +8,7 @@
 --  customer sees on "Track my order".
 -- =====================================================================
 
-USE truebellaa;
+-- USE truebellaa;
 SET NAMES utf8mb4;
 
 CREATE TABLE shipments (

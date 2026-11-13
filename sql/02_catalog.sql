@@ -15,7 +15,7 @@
 --    * Each translation is independently editable/auditable.
 -- =====================================================================
 
-USE truebellaa;
+-- USE truebellaa;
 SET NAMES utf8mb4;
 
 -- ---------------------------------------------------------------------

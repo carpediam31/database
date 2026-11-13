@@ -8,7 +8,7 @@
 --  real app will replace them on first login.
 -- =====================================================================
 
-USE truebellaa;
+-- USE truebellaa;
 SET NAMES utf8mb4;   -- CRITICAL: makes multi-language text load correctly
                      -- even if your mysql client defaults to latin1.
 
